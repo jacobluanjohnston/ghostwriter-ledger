@@ -1,18 +1,31 @@
 <div class="p-6">
   <h1 class="text-2xl font-bold mb-4">Ghostwriter Ledger</h1>
-  <table class="min-w-full text-sm">
+  <table class="min-w-full text-sm table-auto">
     <thead class="border-b font-medium">
-    <tr><th>SHA</th><th>Author</th><th>Repo</th><th>AI %</th><th>Tags</th><th>Pushed</th></tr>
+    <tr>
+      <th class="text-left">Repo#SHA</th>
+      <th class="text-left">Author</th>
+      <th class="text-left">AI %</th>
+      <th class="text-left">Tags</th>
+      <th class="text-left">Message</th>
+      <th class="text-left">Similarity Desc</th>
+      <th class="text-left">Concepts</th>
+      <th class="text-left">Concept Desc</th>
+      <th class="text-left">Pushed</th>
+    </tr>
     </thead>
     <tbody>
     <% @commits.each do |c| %>
       <tr class="border-b">
-        <td class="font-mono"><%= c.sha[0,7] %></td>
+        <td class="font-mono"><%= "#{c.repo}##{c.sha[0,7]}" %></td>
         <td><%= c.author %></td>
-        <td><%= c.repo %></td>
-        <td><%= (c.ai_score*100).round(1) %>%</td>
+        <td><%= (c.ai_score * 100).round(1) %>%</td>
         <td><%= c.tags&.join(", ") %></td>
-        <td><%= c.created_at.strftime("%Y‑%m‑%d %H:%M") %></td>
+        <td><%= c.message %></td>
+        <td><%= c.similarity_description %></td>
+        <td><%= c.concepts %></td>
+        <td><%= c.concept_description %></td>
+        <td><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></td>
       </tr>
     <% end %>
     </tbody>

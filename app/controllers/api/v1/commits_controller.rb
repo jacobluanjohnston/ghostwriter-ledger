@@ -15,6 +15,6 @@ class Api::V1::CommitsController < ApplicationController
   end
 
   def commit_params
-    params.permit(:sha, :author, :repo, :message, :ai_score, tags: [])
+    params.permit(:sha, :author, :repo, :message, :ai_score, :similarity_description, :concepts, :concept_description, :tech_debt_score, tags: [])
   end
 end

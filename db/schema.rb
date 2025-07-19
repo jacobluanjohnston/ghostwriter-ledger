@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_19_204221) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_19_222717) do
   create_table "commits", force: :cascade do |t|
     t.string "sha"
     t.string "author"
@@ -20,6 +20,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_19_204221) do
     t.text "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "similarity_description"
+    t.text "concepts"
+    t.text "concept_description"
   end
 
 end
